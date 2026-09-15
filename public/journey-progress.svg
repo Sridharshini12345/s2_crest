@@ -1,0 +1,85 @@
+<svg width="700" height="420" viewBox="0 0 700 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="350" x2="350" y1="0" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071B2C"/>
+      <stop offset="1" stop-color="#03101C"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(440 200) rotate(60) scale(240 190)">
+      <stop stop-color="#74FFF6" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#071B2C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rocket" x1="320" x2="560" y1="110" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FBFF"/>
+      <stop offset="1" stop-color="#78B9C7"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="12" flood-color="#44F9FF" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="700" height="420" rx="10" fill="url(#bg)"/>
+
+  <!-- grid / orbit lines -->
+  <g opacity="0.45">
+    <path d="M350 20C492 120 560 244 492 360" stroke="#7BA4B8" stroke-width="1" stroke-dasharray="3 3"/>
+    <path d="M350 20C220 120 170 244 220 360" stroke="#7BA4B8" stroke-width="1" stroke-dasharray="3 3"/>
+    <path d="M80 210C160 160 190 185 230 220C280 250 330 252 350 210C370 170 420 170 440 210C490 240 540 260 620 205" stroke="#8CF7FF" stroke-width="1" stroke-dasharray="2 3"/>
+    <path d="M80 165C170 130 260 150 350 200C410 235 460 240 560 180" stroke="#8CF7FF" stroke-width="1" stroke-dasharray="2 3"/>
+  </g>
+
+  <!-- text area -->
+  <g>
+    <text x="24" y="45" fill="#9CEEFF" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="2">YOUR JOURNEY</text>
+    <text x="24" y="92" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="36" font-weight="700">Progress with purpose.</text>
+  </g>
+
+  <!-- journey steps left -->
+  <g fill="#FFFFFF" font-family="Arial, sans-serif" font-size="22" font-weight="700">
+    <text x="35" y="145"><tspan fill="#9CEEFF">01</tspan> LEARN</text>
+    <text x="35" y="185"><tspan fill="#9CEEFF">02</tspan> PRACTICE</text>
+    <text x="35" y="225"><tspan fill="#9CEEFF">03</tspan> BUILD</text>
+    <text x="35" y="265"><tspan fill="#9CEEFF">04</tspan> REVIEW</text>
+    <text x="35" y="305"><tspan fill="#9CEEFF">05</tspan> IMPROVE</text>
+  </g>
+
+  <!-- line and footer text -->
+  <path d="M20 335H650" stroke="#7AA0B8" stroke-width="1"/>
+  <text x="24" y="368" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="16" opacity="0.95">Every lesson is a step toward becoming a more confident builder.</text>
+
+  <!-- rocket -->
+  <g filter="url(#shadow)">
+    <ellipse cx="430" cy="280" rx="180" ry="42" fill="url(#glow)"/>
+
+    <!-- flame tail -->
+    <path d="M345 270C300 302 290 320 300 338C312 332 333 324 350 320C360 318 355 304 345 270Z" fill="#CFFAFB" opacity="0.9"/>
+    <path d="M330 260C315 280 306 304 320 320C330 322 335 318 338 312C330 306 332 290 338 280C335 276 332 270 330 260Z" fill="#9AFFF3" opacity="0.85"/>
+
+    <!-- rocket body -->
+    <path d="M420 140C480 160 510 180 510 208C515 230 490 250 460 250C440 250 420 230 420 220C420 180 420 160 420 140Z" fill="url(#rocket)" stroke="#A9DCEB" stroke-width="2"/>
+    <path d="M390 190C420 160 455 150 455 185C455 215 440 240 420 250C410 245 404 228 390 190Z" fill="#092D65" opacity="0.9"/>
+    <path d="M435 150C450 170 452 200 444 240C460 220 472 210 480 190C486 176 482 160 470 154C460 150 445 150 435 150Z" fill="#D8F7F6"/>
+
+    <!-- nose -->
+    <path d="M435 122C475 140 500 160 510 178C478 175 452 172 438 160C432 150 430 142 435 122Z" fill="#E7EDF3"/>
+
+    <!-- left fins -->
+    <path d="M410 185C380 200 355 243 340 270C330 260 330 248 338 238C352 228 372 210 383 197C392 200 395 196 410 185Z" fill="#9ED8E3"/>
+    <path d="M410 205C380 208 370 222 370 238C353 244 347 258 340 272C360 268 390 262 405 250C414 232 412 218 410 205Z" fill="#EFFAFB"/>
+
+    <!-- right fins -->
+    <path d="M486 190C525 210 548 238 554 254C540 248 528 252 520 250C515 242 515 236 512 230C504 228 498 220 486 190Z" fill="#95C9D8"/>
+
+    <!-- engine -->
+    <ellipse cx="430" cy="265" rx="55" ry="50" fill="#061324"/>
+    <ellipse cx="432" cy="260" rx="45" ry="42" fill="#AFEFFB" opacity="0.9"/>
+
+    <!-- stripe -->
+    <path d="M420 178C430 210 435 232 432 258" stroke="#D8F8FF" stroke-width="2" opacity="0.9"/>
+
+    <!-- exhaust line -->
+    <path d="M302 280C330 280 342 292 352 308C330 304 320 304 306 300C295 302 292 301 286 296" fill="none" stroke="#A7FCFF" stroke-width="3"/>
+  </g>
+
+  <!-- small star bottom right -->
+  <path d="M620 60L622 66L628 68L622 70L620 76L618 70L612 68L618 66L620 60Z" fill="#EAFBFE"/>
+</svg>
