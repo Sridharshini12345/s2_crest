@@ -1,6 +1,6 @@
-# S2 Crest Freelancer Portfolio
+# S2 CREST Portfolio
 
-A modern and responsive portfolio website created to showcase a freelancer’s services, technical skills, projects, and professional capabilities.
+The official S2 CREST portfolio website presents the team's technology services, learning programs, selected projects, technical toolkit, and contact details in a responsive single-page experience. S2 CREST helps individuals, students, startups, and businesses move from concept to code through development, mentoring, deployment, and ongoing support.
 
 ## Features
 
@@ -13,13 +13,25 @@ A modern and responsive portfolio website created to showcase a freelancer’s s
 - Contact form submissions stored in Supabase
 - Smooth navigation and polished visual design
 
+## Portfolio Sections
+
+- **About Us:** S2 CREST's mission, vision, values, and approach to practical technology.
+- **Services:** Web development, AI and machine learning, deployment and support, and student project support.
+- **Learning:** Guided tracks covering programming, web development, backend and databases, computer science, and modern technologies.
+- **Tech Stack:** MERN, MEVN, MEAN, Spring Boot, Flutter, Firebase, UI/UX, and graphic design tools.
+- **Projects:** Filterable examples covering web, AI/ML, mobile, UI/UX, and student projects.
+- **Our Process:** A clear path from understanding requirements through planning, development, testing, deployment, and support.
+- **Team:** An overview of the people and roles behind S2 CREST.
+- **Contact:** A Supabase-backed form for project enquiries, learning goals, and support requests.
+
 ## Technologies Used
 
 - React
 - Vite
-- JavaScript
-- HTML5
-- CSS3
+- TypeScript
+- HTML5 and CSS3
+- Supabase
+- Lucide React
 
 ## Getting Started
 
@@ -58,9 +70,20 @@ Open the local URL displayed in the terminal.
 npm run build
 ```
 
-## Project Purpose
+## Contact Form Database
 
-This project is an attempt to create a professional online presence for a freelancer. It highlights their services, experience, technical expertise, and selected work in an engaging portfolio layout.
+The contact form stores the submitter's name, email, phone number, selected service, message, and submission timestamp in the Supabase `contact_submissions` table. Row Level Security allows visitors to create submissions without exposing existing submissions to the public. The SQL setup is provided in `supabase-contact-submissions.sql`.
+
+## Deployment
+
+Configure the following environment variables in the hosting provider before deploying:
+
+```env
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_ANON_KEY=your-publishable-key
+```
+
+Only the publishable key belongs in this frontend. Never expose a Supabase service-role key in client-side code.
 
 ## License
 
