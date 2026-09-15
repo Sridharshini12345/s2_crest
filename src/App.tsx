@@ -1,4 +1,5 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import { supabase } from './lib/supabase';
 import {
   ArrowDown,
   ArrowRight,
@@ -124,6 +125,8 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [projectFilter, setProjectFilter] = useState('All');
   const [submitted, setSubmitted] = useState(false);
+  const [formError, setFormError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const filters = ['All', 'Web', 'AI/ML', 'Mobile', 'UI/UX', 'Student Projects'];
   const visibleProjects = projectFilter === 'All' ? projects : projects.filter((project) => project.category === projectFilter);
 
@@ -134,6 +137,34 @@ function App() {
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
+
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setFormError('');
+
+    if (!supabase) {
+      setFormError('The contact form is not configured yet. Please email us directly.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    const form = new FormData(event.currentTarget);
+    const { error } = await supabase.from('contact_submissions').insert({
+      name: String(form.get('name') ?? '').trim(),
+      email: String(form.get('email') ?? '').trim(),
+      phone: String(form.get('phone') ?? '').trim() || null,
+      service: String(form.get('service') ?? '').trim() || null,
+      message: String(form.get('message') ?? '').trim(),
+    });
+    setIsSubmitting(false);
+
+    if (error) {
+      setFormError('We could not send your message. Please try again or email us directly.');
+      return;
+    }
+
+    setSubmitted(true);
+  };
 
   return <div className="site-shell">
     <div className="scroll-progress" />
@@ -196,7 +227,7 @@ function App() {
 
       <section id="team" className="section-pad team-section"><div className="container"><Reveal><SectionHeading eyebrow="The people behind the work" title="Our Team" description="Passionate minds. Powerful collaboration." /></Reveal><div className="team-grid">{[{ initials: 'SC', name: 'S² CREST Team', role: 'Technology & Learning', color: 'team-blue' }, { initials: 'BU', name: 'Builders', role: 'Development', color: 'team-violet' }, { initials: 'LE', name: 'Learning Crew', role: 'Mentoring', color: 'team-cyan' }, { initials: 'SU', name: 'Support Crew', role: 'Client Support', color: 'team-orange' }].map((member, index) => <Reveal key={member.name} delay={index * 75} className="team-card"><div className={`avatar ${member.color}`}>{member.initials}</div><h3>{member.name}</h3><span>{member.role}</span><p>Curious, practical and committed to making technology easier to use.</p><div className="social-row"><a href="#contact" aria-label="LinkedIn"><Linkedin size={15} /></a><a href="#contact" aria-label="GitHub"><Github size={15} /></a></div></Reveal>)}</div><Reveal className="team-banner"><Users size={24} /><div><strong>Together, we build better.</strong><span>A team that works, learns and grows together.</span></div></Reveal></div></section>
 
-      <section id="contact" className="contact-section dark-panel section-pad"><div className="container contact-layout"><Reveal className="contact-copy"><SectionHeading light eyebrow="Let’s connect" title="Get In Touch" description="Let’s build something great together." /><p>Have a project, a learning goal or a question? Tell us where you are and we’ll take the next step with you.</p><div className="contact-details"><a href="tel:9842610223"><span><Phone size={17} /></span><div><small>Call / WhatsApp</small><strong>9842610223 · 7904061068</strong></div></a><a href="mailto:ssquarecrest@gmail.com"><span><Mail size={17} /></span><div><small>Email</small><strong>ssquarecrest@gmail.com</strong></div></a><a href="#contact"><span><Instagram size={17} /></span><div><small>Instagram</small><strong>@s2_crest</strong></div></a></div></Reveal><Reveal className="contact-form-wrap" delay={140}>{submitted ? <div className="success-state"><div className="success-icon"><Check /></div><h3>Message received.</h3><p>Thanks for reaching out. The S² CREST team will be in touch soon.</p><button className="button button-outline button-light" onClick={() => setSubmitted(false)}>Send another message</button></div> : <form onSubmit={(event) => { event.preventDefault(); setSubmitted(true); }}><div className="form-heading"><span className="eyebrow"><span />Start a conversation</span><h3>Tell us about your idea.</h3></div><div className="form-row"><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@email.com" /></label></div><div className="form-row"><label>Phone<input placeholder="Your phone number" /></label><label>Service / Requirement<select defaultValue=""><option value="" disabled>Select a service</option><option>Web Development</option><option>AI & Machine Learning</option><option>Learning</option><option>Project Support</option></select></label></div><label>Message<textarea required rows={4} placeholder="Tell us a little about what you’re building..." /></label><button className="button button-cyan" type="submit">Send Message <Send size={16} /></button></form>}</Reveal></div></section>
+      <section id="contact" className="contact-section dark-panel section-pad"><div className="container contact-layout"><Reveal className="contact-copy"><SectionHeading light eyebrow="Let’s connect" title="Get In Touch" description="Let’s build something great together." /><p>Have a project, a learning goal or a question? Tell us where you are and we’ll take the next step with you.</p><div className="contact-details"><a href="tel:9842610223"><span><Phone size={17} /></span><div><small>Call / WhatsApp</small><strong>9842610223 · 7904061068</strong></div></a><a href="mailto:ssquarecrest@gmail.com"><span><Mail size={17} /></span><div><small>Email</small><strong>ssquarecrest@gmail.com</strong></div></a><a href="#contact"><span><Instagram size={17} /></span><div><small>Instagram</small><strong>@s2_crest</strong></div></a></div></Reveal><Reveal className="contact-form-wrap" delay={140}>{submitted ? <div className="success-state"><div className="success-icon"><Check /></div><h3>Message received.</h3><p>Thanks for reaching out. The S² CREST team will be in touch soon.</p><button className="button button-outline button-light" onClick={() => setSubmitted(false)}>Send another message</button></div> : <form onSubmit={handleContactSubmit}><div className="form-heading"><span className="eyebrow"><span />Start a conversation</span><h3>Tell us about your idea.</h3></div><div className="form-row"><label>Name<input name="name" required placeholder="Your name" /></label><label>Email<input name="email" required type="email" placeholder="you@email.com" /></label></div><div className="form-row"><label>Phone<input name="phone" placeholder="Your phone number" /></label><label>Service / Requirement<select name="service" defaultValue=""><option value="" disabled>Select a service</option><option>Web Development</option><option>AI & Machine Learning</option><option>Learning</option><option>Project Support</option></select></label></div><label>Message<textarea name="message" required rows={4} placeholder="Tell us a little about what you’re building..." /></label>{formError && <p role="alert" className="form-error">{formError}</p>}<button className="button button-cyan" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send Message'} {!isSubmitting && <Send size={16} />}</button></form>}</Reveal></div></section>
     </main>
 
     <footer className="site-footer dark-panel"><div className="container footer-grid"><div className="footer-brand"><Logo light compact /><p>Building modern digital solutions, empowering learners, and supporting ideas from concept to completion.</p><div className="footer-socials"><a href="#contact" aria-label="Instagram"><Instagram size={16} /></a><a href="#contact" aria-label="LinkedIn"><Linkedin size={16} /></a><a href="#contact" aria-label="GitHub"><Github size={16} /></a><a href="#contact" aria-label="Facebook"><Facebook size={16} /></a></div></div><div className="footer-column"><h4>Quick links</h4>{['Home', 'About Us', 'Services', 'Learning', 'Tech Stack', 'Projects', 'Our Process', 'Team', 'Contact'].map((link) => <a key={link} href={`#${link.toLowerCase().replace(/ /g, '-')}`}>{link}</a>)}</div><div className="footer-column"><h4>Our services</h4>{['Web Development', 'AI & Machine Learning', 'Deployment & Support', 'Student Project Support'].map((link) => <a key={link} href="#services">{link}</a>)}</div><div className="footer-column footer-contact"><h4>Contact us</h4><a href="tel:9842610223">9842610223 · 7904061068</a><a href="mailto:ssquarecrest@gmail.com">ssquarecrest@gmail.com</a><a href="#contact">Instagram: s2_crest</a><div className="footer-wave" /></div></div><div className="container footer-bottom"><span>© 2026 S² CREST. All rights reserved.</span><span>From concept to code, together.</span></div></footer>
