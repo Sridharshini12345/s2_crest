@@ -1128,12 +1128,19 @@ button {
 }
 .project-visual {
   height: 170px;
-  padding: 21px;
+  padding: 0;
   display: grid;
   place-items: center;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #0d3e6b, #1a7fa2);
+}
+.project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.08) contrast(1.04);
 }
 .project-visual.ai {
   background: linear-gradient(135deg, #17104a, #7529b3);

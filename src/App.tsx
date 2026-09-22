@@ -82,6 +82,7 @@ const projects = [
     visual: 'ai',
     demoUrl: 'https://dementia-screening.vercel.app/',
     githubUrl: 'https://github.com/Sridharshini12345/Dementia_screening/tree/main/Cogniguard',
+    screenshotUrl: 'https://image.thum.io/get/width/1200/https://dementia-screening.vercel.app/',
   },
   {
     title: 'Local Community Support Hub',
@@ -91,6 +92,7 @@ const projects = [
     visual: 'commerce',
     demoUrl: 'https://localcommunitysupporthub.vercel.app/',
     githubUrl: 'https://github.com/sankari666/Local-Community-Support-Hub-frontend.git',
+    screenshotUrl: 'https://image.thum.io/get/width/1200/https://localcommunitysupporthub.vercel.app/',
   },
   {
     title: 'Sonar Detector',
@@ -100,6 +102,7 @@ const projects = [
     visual: 'analytics',
     demoUrl: 'https://sonar-frontend-phi.vercel.app/',
     githubUrl: 'https://github.com/sankari666/sonar-frontend.git',
+    screenshotUrl: 'https://image.thum.io/get/width/1200/https://sonar-frontend-phi.vercel.app/',
   },
 ];
 
@@ -239,7 +242,7 @@ function App() {
 
       <section id="tech-stack" className="section-pad stack-section"><div className="container"><Reveal><SectionHeading eyebrow="Our toolkit" title="Our Tech Stack" description="Modern technologies for powerful solutions." /></Reveal><div className="stack-grid">{[{ name: 'MERN Stack', tech: ['MongoDB', 'Express', 'React', 'Node.js'], icon: Code2 }, { name: 'MEVN Stack', tech: ['MongoDB', 'Express', 'Vue', 'Node.js'], icon: Layers3 }, { name: 'MEAN Stack', tech: ['MongoDB', 'Express', 'Angular', 'Node.js'], icon: Globe2 }, { name: 'Spring Boot', tech: ['Java', 'Spring', 'MySQL'], icon: Server }, { name: 'App Development', tech: ['Flutter', 'Firebase'], icon: MonitorSmartphone }, { name: 'UI/UX Design', tech: ['Figma', 'Research'], icon: Palette }, { name: 'Graphic Design', tech: ['Branding', 'Visuals'], icon: Sparkles }].map((stack, index) => <Reveal key={stack.name} delay={index * 55} className="stack-card"><div className="stack-card-head"><div className="stack-logo"><stack.icon size={19} /></div><span>{stack.name}</span></div><div className="tech-chips stack-tech-chips">{stack.tech.map((tech) => <span key={tech}>{techLogoSources[tech] ? <img src={techLogoSources[tech]} alt="" /> : <i className="chip-dot" />}{tech}</span>)}</div></Reveal>)}</div></div></section>
 
-      <section id="projects" className="section-pad projects-section light-blue-section"><div className="container"><div className="heading-row project-heading"><Reveal><SectionHeading eyebrow="Selected work" title="Our Projects" description="Ideas. Code. Impact." /></Reveal><div className="filter-tabs" role="tablist">{filters.map((filter) => <button key={filter} className={projectFilter === filter ? 'active' : ''} onClick={() => setProjectFilter(filter)}>{filter}</button>)}</div></div><div className="project-grid">{visibleProjects.map((project, index) => <Reveal key={project.title} delay={index * 60} className="project-card"><div className={`project-visual ${project.visual}`}><div className="visual-window"><span /><span /><span /><div className="visual-content"><b /><i /><em /></div></div><div className="visual-orb" /></div><div className="project-info"><span className="project-category">{project.category}</span><h3>{project.title}</h3><p>{project.description}</p><div className="project-foot"><div className="tech-chips">{project.tech.map((tech) => <span key={tech}>{tech}</span>)}</div><div className="project-actions"><a href={project.demoUrl} target="_blank" rel="noreferrer" className="project-action-link demo-link">Demo</a><a href={project.githubUrl} target="_blank" rel="noreferrer" className="project-action-link code-link">Code</a></div></div></div></Reveal>)}</div></div></section>
+      <section id="projects" className="section-pad projects-section light-blue-section"><div className="container"><div className="heading-row project-heading"><Reveal><SectionHeading eyebrow="Selected work" title="Our Projects" description="Ideas. Code. Impact." /></Reveal><div className="filter-tabs" role="tablist">{filters.map((filter) => <button key={filter} className={projectFilter === filter ? 'active' : ''} onClick={() => setProjectFilter(filter)}>{filter}</button>)}</div></div><div className="project-grid">{visibleProjects.map((project, index) => <Reveal key={project.title} delay={index * 60} className="project-card"><div className={`project-visual ${project.visual}`}><img src={project.screenshotUrl} alt={`${project.title} preview`} /><div className="visual-orb" /></div><div className="project-info"><span className="project-category">{project.category}</span><h3>{project.title}</h3><p>{project.description}</p><div className="project-foot"><div className="tech-chips">{project.tech.map((tech) => <span key={tech}>{tech}</span>)}</div><div className="project-actions"><a href={project.demoUrl} target="_blank" rel="noreferrer" className="project-action-link demo-link">Demo</a><a href={project.githubUrl} target="_blank" rel="noreferrer" className="project-action-link code-link">Code</a></div></div></div></Reveal>)}</div></div></section>
 
       <section id="our-process" className="section-pad process-section"><div className="container"><Reveal><SectionHeading eyebrow="How we work" title="Our Process" description="From idea to delivery — in simple steps." /></Reveal><div className="process-track">{process.map((step, index) => <Reveal key={step[0]} delay={index * 80} className="process-step"><div className="process-number">{step[0]}</div><div className="process-dot"><span /></div><h3>{step[1]}</h3><p>{step[2]}</p></Reveal>)}</div><Reveal className="process-banner"><div className="banner-spark"><Sparkles size={22} /></div><div><strong>Your idea + Our expertise = Great results</strong><span>Let’s move from a blank page to something people can use.</span></div><a href="#contact" className="round-arrow"><ArrowRight size={18} /></a></Reveal></div></section>
 
