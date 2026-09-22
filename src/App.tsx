@@ -9,7 +9,6 @@ import {
   Check,
   Code2,
   Database,
-  ExternalLink,
   Eye,
   Facebook,
   Github,
@@ -75,12 +74,33 @@ const techLogoSources: Record<string, string> = {
 };
 
 const projects = [
-  { title: 'E-Commerce Platform', category: 'Web', description: 'A clean shopping experience built for everyday scale.', tech: ['React', 'Node.js'], visual: 'commerce' },
-  { title: 'AI Image Classifier', category: 'AI/ML', description: 'A focused computer vision tool that makes recognition simple.', tech: ['Python', 'TensorFlow'], visual: 'ai' },
-  { title: 'Student Management System', category: 'Student Projects', description: 'A clear, connected workspace for academic administration.', tech: ['Spring Boot', 'MySQL'], visual: 'student' },
-  { title: 'Mobile App Concept', category: 'Mobile', description: 'A thoughtful mobile product designed around real user needs.', tech: ['Flutter', 'Firebase'], visual: 'mobile' },
-  { title: 'Brand Experience', category: 'UI/UX', description: 'A visual system that gives a growing brand a confident voice.', tech: ['Figma', 'UI/UX'], visual: 'brand' },
-  { title: 'Analytics Dashboard', category: 'Web', description: 'Actionable signals surfaced through a calm, responsive interface.', tech: ['Vue', 'Charts'], visual: 'analytics' },
+  {
+    title: 'AI Cognitive Dementia Screening',
+    category: 'AI/ML',
+    description: 'An AI-assisted dementia screening platform for evaluating cognitive patterns and early risk indicators.',
+    tech: ['Python', 'TensorFlow', 'AI'],
+    visual: 'ai',
+    demoUrl: 'https://dementia-screening.vercel.app/',
+    githubUrl: 'https://github.com/Sridharshini12345/Dementia_screening/tree/main/Cogniguard',
+  },
+  {
+    title: 'Local Community Support Hub',
+    category: 'Web',
+    description: 'A community-driven web platform to connect local residents with nearby support and useful services.',
+    tech: ['React', 'Node.js', 'Vite'],
+    visual: 'commerce',
+    demoUrl: 'https://localcommunitysupporthub.vercel.app/',
+    githubUrl: 'https://github.com/sankari666/Local-Community-Support-Hub-frontend.git',
+  },
+  {
+    title: 'Sonar Detector',
+    category: 'AI/ML',
+    description: 'An AI-powered sonar detection prototype focused on signal recognition and intelligent monitoring.',
+    tech: ['Python', 'ML', 'Sensor'],
+    visual: 'analytics',
+    demoUrl: 'https://sonar-frontend-phi.vercel.app/',
+    githubUrl: 'https://github.com/sankari666/sonar-frontend.git',
+  },
 ];
 
 const process = [
@@ -219,7 +239,7 @@ function App() {
 
       <section id="tech-stack" className="section-pad stack-section"><div className="container"><Reveal><SectionHeading eyebrow="Our toolkit" title="Our Tech Stack" description="Modern technologies for powerful solutions." /></Reveal><div className="stack-grid">{[{ name: 'MERN Stack', tech: ['MongoDB', 'Express', 'React', 'Node.js'], icon: Code2 }, { name: 'MEVN Stack', tech: ['MongoDB', 'Express', 'Vue', 'Node.js'], icon: Layers3 }, { name: 'MEAN Stack', tech: ['MongoDB', 'Express', 'Angular', 'Node.js'], icon: Globe2 }, { name: 'Spring Boot', tech: ['Java', 'Spring', 'MySQL'], icon: Server }, { name: 'App Development', tech: ['Flutter', 'Firebase'], icon: MonitorSmartphone }, { name: 'UI/UX Design', tech: ['Figma', 'Research'], icon: Palette }, { name: 'Graphic Design', tech: ['Branding', 'Visuals'], icon: Sparkles }].map((stack, index) => <Reveal key={stack.name} delay={index * 55} className="stack-card"><div className="stack-card-head"><div className="stack-logo"><stack.icon size={19} /></div><span>{stack.name}</span></div><div className="tech-chips stack-tech-chips">{stack.tech.map((tech) => <span key={tech}>{techLogoSources[tech] ? <img src={techLogoSources[tech]} alt="" /> : <i className="chip-dot" />}{tech}</span>)}</div></Reveal>)}</div></div></section>
 
-      <section id="projects" className="section-pad projects-section light-blue-section"><div className="container"><div className="heading-row project-heading"><Reveal><SectionHeading eyebrow="Selected work" title="Our Projects" description="Ideas. Code. Impact." /></Reveal><div className="filter-tabs" role="tablist">{filters.map((filter) => <button key={filter} className={projectFilter === filter ? 'active' : ''} onClick={() => setProjectFilter(filter)}>{filter}</button>)}</div></div><div className="project-grid">{visibleProjects.map((project, index) => <Reveal key={project.title} delay={index * 60} className="project-card"><div className={`project-visual ${project.visual}`}><div className="visual-window"><span /><span /><span /><div className="visual-content"><b /><i /><em /></div></div><div className="visual-orb" /></div><div className="project-info"><span className="project-category">{project.category}</span><h3>{project.title}</h3><p>{project.description}</p><div className="project-foot"><div className="tech-chips">{project.tech.map((tech) => <span key={tech}>{tech}</span>)}</div><a href="#contact" aria-label={`View ${project.title}`}><ExternalLink size={16} /></a></div></div></Reveal>)}</div></div></section>
+      <section id="projects" className="section-pad projects-section light-blue-section"><div className="container"><div className="heading-row project-heading"><Reveal><SectionHeading eyebrow="Selected work" title="Our Projects" description="Ideas. Code. Impact." /></Reveal><div className="filter-tabs" role="tablist">{filters.map((filter) => <button key={filter} className={projectFilter === filter ? 'active' : ''} onClick={() => setProjectFilter(filter)}>{filter}</button>)}</div></div><div className="project-grid">{visibleProjects.map((project, index) => <Reveal key={project.title} delay={index * 60} className="project-card"><div className={`project-visual ${project.visual}`}><div className="visual-window"><span /><span /><span /><div className="visual-content"><b /><i /><em /></div></div><div className="visual-orb" /></div><div className="project-info"><span className="project-category">{project.category}</span><h3>{project.title}</h3><p>{project.description}</p><div className="project-foot"><div className="tech-chips">{project.tech.map((tech) => <span key={tech}>{tech}</span>)}</div><div className="project-actions"><a href={project.demoUrl} target="_blank" rel="noreferrer" className="project-action-link demo-link">Demo</a><a href={project.githubUrl} target="_blank" rel="noreferrer" className="project-action-link code-link">Code</a></div></div></div></Reveal>)}</div></div></section>
 
       <section id="our-process" className="section-pad process-section"><div className="container"><Reveal><SectionHeading eyebrow="How we work" title="Our Process" description="From idea to delivery — in simple steps." /></Reveal><div className="process-track">{process.map((step, index) => <Reveal key={step[0]} delay={index * 80} className="process-step"><div className="process-number">{step[0]}</div><div className="process-dot"><span /></div><h3>{step[1]}</h3><p>{step[2]}</p></Reveal>)}</div><Reveal className="process-banner"><div className="banner-spark"><Sparkles size={22} /></div><div><strong>Your idea + Our expertise = Great results</strong><span>Let’s move from a blank page to something people can use.</span></div><a href="#contact" className="round-arrow"><ArrowRight size={18} /></a></Reveal></div></section>
 

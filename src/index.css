@@ -1245,6 +1245,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   margin-top: 16px;
 }
 .project-foot .tech-chips {
@@ -1253,19 +1254,36 @@ button {
 .project-foot .tech-chips span {
   padding: 3px 6px;
 }
-.project-foot > a {
-  display: grid;
-  place-items: center;
-  color: #138ac0;
-  width: 27px;
-  height: 27px;
-  border-radius: 50%;
-  border: 1px solid #dce6ed;
+.project-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.project-action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   transition: 0.2s;
 }
-.project-card:hover .project-foot > a {
-  color: #fff;
+.project-action-link.demo-link {
   background: #0a2949;
+  color: #fff;
+}
+.project-action-link.code-link {
+  background: #edf9ff;
+  color: #0d4d7a;
+  border: 1px solid #d7ebf7;
+}
+.project-action-link:hover {
+  transform: translateY(-1px);
+  opacity: 0.96;
 }
 .process-section {
   background: #fff;
