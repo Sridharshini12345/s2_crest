@@ -82,7 +82,7 @@ const projects = [
     visual: 'ai',
     demoUrl: 'https://dementia-screening.vercel.app/',
     githubUrl: 'https://github.com/Sridharshini12345/Dementia_screening/tree/main/Cogniguard',
-    screenshotUrl: 'https://image.thum.io/get/width/1200/https://dementia-screening.vercel.app/',
+    screenshotUrl: '/project-screenshots/dementia-screening.png',
   },
   {
     title: 'Local Community Support Hub',
@@ -92,7 +92,7 @@ const projects = [
     visual: 'commerce',
     demoUrl: 'https://localcommunitysupporthub.vercel.app/',
     githubUrl: 'https://github.com/sankari666/Local-Community-Support-Hub-frontend.git',
-    screenshotUrl: 'https://image.thum.io/get/width/1200/https://localcommunitysupporthub.vercel.app/',
+    screenshotUrl: '/project-screenshots/local-community-support-hub.png',
   },
   {
     title: 'Sonar Detector',
@@ -102,7 +102,7 @@ const projects = [
     visual: 'analytics',
     demoUrl: 'https://sonar-frontend-phi.vercel.app/',
     githubUrl: 'https://github.com/sankari666/sonar-frontend.git',
-    screenshotUrl: 'https://image.thum.io/get/width/1200/https://sonar-frontend-phi.vercel.app/',
+    screenshotUrl: '/project-screenshots/sonar-detector.png',
   },
 ];
 
